@@ -1,26 +1,25 @@
-import { Fragment, type CSSProperties } from 'react';
 import {
-  Text,
-  Html,
-  Head,
   Body,
-  Font,
+  Button,
+  Column,
   Container,
-  Link,
+  Font,
+  Head,
   Heading,
   Hr,
-  Button,
+  Html,
   Img,
+  Link,
   Preview,
   Row,
-  Column,
+  Text,
 } from '@react-email/components';
 import {
   render as reactEmailRender,
   renderAsync as reactEmailRenderAsync,
 } from '@react-email/render';
 import type { JSONContent } from '@tiptap/core';
-import merge from 'lodash/merge';
+import { Fragment, type CSSProperties } from 'react';
 import { generateKey } from './utils';
 
 interface NodeOptions {
@@ -235,7 +234,7 @@ export class Maily {
   }
 
   setTheme(theme?: ThemeOptions) {
-    this.config.theme = merge(this.config.theme, theme);
+    this.config.theme = Object.assign(this.config.theme ?? {}, theme);
   }
 
   setVariableFormatter(formatter: VariableFormatter) {
@@ -1047,13 +1046,11 @@ export class Maily {
                     <span
                       style={{
                         fontWeight: 600,
-                        color:
-                          this.config.theme?.colors?.linkCardBadgeText,
+                        color: this.config.theme?.colors?.linkCardBadgeText,
                         padding: '4px 8px',
                         borderRadius: '8px',
                         backgroundColor:
-                          this.config.theme?.colors
-                            ?.linkCardBadgeBackground,
+                          this.config.theme?.colors?.linkCardBadgeBackground,
                         fontSize: '12px',
                         lineHeight: '12px',
                       }}
